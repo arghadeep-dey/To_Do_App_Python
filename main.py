@@ -1,9 +1,9 @@
 todos = []
 
 def get_todos():
-    with open(f"todos.txt", "r") as file:
-        todos = file.readlines()
-    return todos
+    with open(f"todos.txt", "r") as file_local:
+        local_todos = file.readlines()
+    return local_todos
 
 while True:
     user_action = input("Type add, show, edit, complete or exit: ")
