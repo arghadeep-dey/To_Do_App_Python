@@ -2,7 +2,7 @@ todos = []
 
 def get_todos():
     with open(f"todos.txt", "r") as file_local:
-        local_todos = file.readlines()
+        local_todos = file_local.readlines()
     return local_todos
 
 while True:
