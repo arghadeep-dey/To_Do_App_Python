@@ -32,7 +32,7 @@ while True:
 
 
     elif user_action.startswith("show"):
-
+        print("Showing all todos with their respective indexes")
         todos = get_todos("todos.txt")
 
         for index,item in enumerate(todos):
