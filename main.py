@@ -1,5 +1,6 @@
 todos = []
 
+# Functions for reducing repetitive code
 def get_todos(filepath):
     with open(filepath, "r") as file_local:
         local_todos = file_local.readlines()
@@ -14,6 +15,8 @@ def write_todos(filepath,todos_arg):
         print(f"{filepath} does not exist")
         return 0
 
+
+# Loop for Continuous Action Input
 while True:
     user_action = input("Type add, show, edit, complete or exit: ")
     user_action = user_action.strip()
