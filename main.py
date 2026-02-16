@@ -1,8 +1,14 @@
 #Importing File Management Functions
 import functions
+import time
 
 #Initializing Variable
 todos = []
+now = time.strftime("%b %d,%Y %H:%M:%S")
+
+#Welcoming Statement
+print("Welcome to the Todo Python")
+print(f"It is {now}\n")
 
 # Loop for Continuous Action Input
 while True:
