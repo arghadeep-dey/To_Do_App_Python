@@ -1,0 +1,12 @@
+# Python bytecode (compiled files)
+__pycache__/
+*.py[cod]
+
+# PyCharm/IntelliJ files
+.idea/
+
+# VS Code files
+.vscode/
+
+# Local data files (optional, keeps your personal tasks private)
+*.txt
