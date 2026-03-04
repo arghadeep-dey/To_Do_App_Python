@@ -6,6 +6,9 @@ __pycache__/
 # PyCharm/IntelliJ files
 .idea/
 
+#.venv files
+.venv
+
 # VS Code files
 .vscode/
 
