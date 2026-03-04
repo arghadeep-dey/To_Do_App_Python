@@ -7,7 +7,7 @@ __pycache__/
 .idea/
 
 #.venv files
-.venv
+.venv/
 
 # VS Code files
 .vscode/
