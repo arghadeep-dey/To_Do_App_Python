@@ -1,9 +1,9 @@
 Wake up
-Bake a Cake
-bath
-Finish Dinner
+Bake cakeFinish Dinner
 having dinner
 wake walking
 Food Eating
 Sleep
 Master Python
+Food
+Finish Dinner
