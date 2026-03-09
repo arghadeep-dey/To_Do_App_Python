@@ -15,6 +15,8 @@ window = gui.Window("my to Do App",
                            [input_box,add_button],
                            [list_box,edit_button]],
                    font=('Helvetica', 20))
+
+#Functionality for the UI Window
 while True:
     event, values =window.read()
     match event:
