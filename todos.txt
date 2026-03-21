@@ -1,7 +1,6 @@
 Wake up
 Bake cakeFinish Dinner
 having dinner
-wake walking
 Food Eating
 Sleep
 Master Python

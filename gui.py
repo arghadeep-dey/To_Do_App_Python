@@ -1,24 +1,30 @@
 #Importing Functions
 import functions
-import FreeSimpleGUI as gui
+import FreeSimpleGUI as Gui
 
 #UI Window for To Do App
-label = gui.Text("Type in a to-do")
-input_box = gui.InputText(tooltip="Enter a to-do",key="todo")
-add_button = gui.Button("Add")
-edit_button = gui.Button("Edit")
-list_box = gui.Listbox(values = functions.get_todos(), key = 'todos',
+label = Gui.Text("Type in a to-do")
+input_box = Gui.InputText(tooltip="Enter a to-do",key="todo")
+add_button = Gui.Button("Add")
+edit_button = Gui.Button("Edit")
+complete_button = Gui.Button("Complete")
+exit_button = Gui.Button("Exit")
+list_box = Gui.Listbox(values = functions.get_todos(), key = 'todos',
                        enable_events=True, size=(45,10))
 
-window = gui.Window("my to Do App",
+window = Gui.Window("my to Do App",
                    layout=[[label],
                            [input_box,add_button],
-                           [list_box,edit_button]],
+                           [list_box,edit_button,complete_button],
+                           [exit_button]],
                    font=('Helvetica', 20))
 
 #Functionality for the UI Window
 while True:
     event, values =window.read()
+    # Debugging (optional):
+    # print(1, event)
+    # print(2, values)
     match event:
         case "Add":
             todos = functions.get_todos()
@@ -28,20 +34,41 @@ while True:
             window["todos"].update(values=todos)
 
         case "Edit":
-            todo_to_edit = values['todos'][0]
-            new_todo = values['todo']+ "\n"
+            if not values.get("todos"):
+                Gui.popup("Please select a to-do to edit.")
+                continue
+
+            todo_to_edit = values["todos"][0]
+            # Keep file format consistent: todos are stored with trailing newlines.
+            new_todo = values["todo"].strip() + "\n"
 
             todos = functions.get_todos()
-            inex = todos.index(todo_to_edit)
-            todos[inex] = new_todo
+            index = todos.index(todo_to_edit)
+            todos[index] = new_todo
             functions.write_todos(todos)
             window['todos'].update(values = todos)
 
-        case 'todos':
-            window['todos'].update(values = values['todos'][0])
+        case "Complete":
+            if not values.get("todos"):
+                Gui.popup("Please select a to-do to complete.")
+                continue
 
-        case gui.WIN_CLOSED:
+            todos_to_complete = values["todos"][0]
+            todos = functions.get_todos()
+            todos.remove(todos_to_complete)
+            functions.write_todos(todos)
+            window['todos'].update(values = todos)
+            window["todo"].update(value='')
+
+        case "Exit":
+            break
+
+        case 'todos':
+            # Selecting an item should populate the input box, not mutate the list contents.
+            if values.get("todos"):
+                window["todo"].update(value=values["todos"][0].strip())
+
+        case Gui.WIN_CLOSED:
             break
 
 window.close()
-
