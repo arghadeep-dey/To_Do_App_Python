@@ -29,8 +29,7 @@ def _default_todos_path() -> Path:
     # current working directory, as it often points inside the bundle (not writable).
     in_app_bundle = ".app/Contents/" in Path(__file__).as_posix()
 
-    # Keep the existing behavior for development: if a local todos file exists in the
-    # current working directory, keep using it.
+    # If a local todos file exists in the current working directory, use it (dev-friendly).
     if not in_app_bundle:
         cwd_file = Path.cwd() / DEFAULT_FILENAME
         if cwd_file.exists():
@@ -63,7 +62,6 @@ def _ensure_parent_dir(path: Path) -> Path:
             except Exception as e:  # noqa: BLE001 - deliberate fallback attempts
                 last_err = e
 
-        # If every fallback failed, re-raise the last error to preserve context.
         assert last_err is not None
         raise last_err
 
