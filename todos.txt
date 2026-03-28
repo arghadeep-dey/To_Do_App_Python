@@ -1,8 +1,4 @@
-Wake up Early
-Bake cakeFinish Dinner
-having dinner
-Food Eating
-Sleep
-Master Python
-Food
-Finish Dinner
+Wake Up in the Morning
+Brush Teeth
+Eat Breakfast
+Take Bath
