@@ -38,9 +38,6 @@ while True:
 
     values = values or {}
     window["clock"].update(value=time.strftime("%b %d, %Y %H:%M:%S"))
-    # Debugging (optional):
-    # print(1, event)
-    # print(2, values)
     match event:
         case "Add":
             todos = functions.get_todos()
